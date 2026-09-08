@@ -1,47 +1,17 @@
 # 🩺 ObesityGuard – Klasifikasi & Monitoring Obesitas
 
-Aplikasi Streamlit production-ready untuk klasifikasi obesitas menggunakan **Random Forest**, berbasis aktivitas fisik dan pola makan harian.
-
----
-
-## 📦 Struktur Proyek
-
-```
-obesity_app/
-├── app.py                        # Entry point
-├── requirements.txt
-├── model.pkl                     # ⚠️ Taruh di sini
-├── label_encoder.pkl             # ⚠️ Taruh di sini
-├── supabase_schema.sql           # SQL untuk setup database
-├── .streamlit/
-│   └── secrets.toml              # Kredensial Supabase (jangan di-commit)
-├── utils/
-│   ├── __init__.py
-│   ├── auth.py                   # Login, register, logout
-│   ├── database.py               # Operasi Supabase (health_logs, food_recommendations)
-│   ├── ml.py                     # Load model, prediksi, mapping input
-│   ├── styles.py                 # CSS health theme
-│   └── supabase_client.py        # Singleton Supabase client
-└── pages/
-    ├── __init__.py
-    ├── prediksi.py               # Halaman prediksi & rekomendasi makanan
-    └── dashboard.py              # Halaman monitoring & chart
-```
-
-# Sistem Pemantauan Obesitas Berbasis Dual-Pipeline Model & SHAP
-
 Web interaktif berbasis Streamlit yang dirancang untuk melakukan klasifikasi tingkat obesitas, segmentasi gaya hidup, serta transparansi hasil klasifikasi menggunakan SHAP (Shapley Additive Explanations).
 
 ---
 
-## Prasyarat Sistem (System Requirements)
+## 💻 Prasyarat Sistem (System Requirements)
 Pastikan perangkat Anda telah terinstal perangkat lunak berikut:
 - Python (Direkomendasikan versi 3.11 atau yang lebih baru)
 - pip (Pengelola paket Python)
 
 ---
 
-## Langkah Instalasi & Pengaturan (Installation Guide)
+## ⚙️ Langkah Instalasi & Pengaturan (Installation Guide)
 
 1. Unduh atau Ekstrak Proyek
    Ekstrak folder proyek yang Anda miliki ke direktori pilihan di komputer Anda.
@@ -65,7 +35,28 @@ Pastikan perangkat Anda telah terinstal perangkat lunak berikut:
 
 ---
 
-## Struktur Berkas Proyek (Project Structure)
+## 📁 Struktur Berkas Proyek (Project Structure)
+```
+obesity_app/
+├── app.py                       
+├── requirements.txt
+├── model.pkl                    
+├── label_encoder.pkl             
+├── supabase_schema.sql           
+├── .streamlit/
+│   └── secrets.toml              
+├── utils/
+│   ├── __init__.py
+│   ├── auth.py                   
+│   ├── database.py              
+│   ├── ml.py                    
+│   ├── styles.py                
+│   └── supabase_client.py        
+└── pages/
+    ├── __init__.py
+    ├── prediksi.py               
+    └── dashboard.py             
+```
 Berikut adalah susunan direktori utama dari aplikasi ini:
 - app.py — Berkas utama untuk menjalankan navigasi dan antarmuka web Streamlit.
 - auth.py — Modul untuk menangani autentikasi pengguna (login dan registrasi).
@@ -81,7 +72,7 @@ Berikut adalah susunan direktori utama dari aplikasi ini:
 
 ---
 
-## Cara Menjalankan Program (How to Run)
+## 🚀 Cara Menjalankan Program (How to Run)
 
 1. Pastikan Anda berada di dalam direktori folder proyek dan virtual environment sudah aktif (jika menggunakannya).
 2. Jalankan perintah Streamlit berikut di terminal:
