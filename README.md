@@ -28,78 +28,62 @@ obesity_app/
     └── dashboard.py              # Halaman monitoring & chart
 ```
 
----
+# Sistem Pemantauan Obesitas Berbasis Dual-Pipeline Model & SHAP
 
-## 🚀 Setup & Menjalankan
-
-### 1. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 2. Tambahkan model
-Taruh file berikut di root folder:
-- `model.pkl` – Random Forest model terlatih
-- `label_encoder.pkl` – LabelEncoder untuk 7 kelas obesitas
-
-### 3. Setup Supabase
-
-1. Buat project di [supabase.com](https://supabase.com)
-2. Aktifkan **Email Auth** di Authentication → Providers
-3. Jalankan `supabase_schema.sql` di SQL Editor
-4. Salin **Project URL** dan **anon key** dari Settings → API
-
-### 4. Konfigurasi secrets
-Edit `.streamlit/secrets.toml`:
-```toml
-[supabase]
-url      = "https://YOUR_PROJECT_ID.supabase.co"
-anon_key = "eyJhbGci..."
-```
-
-### 5. Jalankan aplikasi
-```bash
-streamlit run app.py
-```
+Web interaktif berbasis Streamlit yang dirancang untuk melakukan klasifikasi tingkat obesitas, segmentasi gaya hidup, serta transparansi hasil klasifikasi menggunakan SHAP (Shapley Additive Explanations).
 
 ---
 
-## 🔑 Fitur
-
-| Fitur | Detail |
-|---|---|
-| **Auth** | Login & Register via Supabase Auth |
-| **Prediksi** | 7 kelas obesitas dengan confidence score |
-| **Rekomendasi** | Makanan dari DB per kategori, bisa di-refresh |
-| **Simpan** | Hasil disimpan ke `health_logs` per user |
-| **Dashboard** | Berat, BMI, faktor analisis, riwayat klasifikasi |
+## Prasyarat Sistem (System Requirements)
+Pastikan perangkat Anda telah terinstal perangkat lunak berikut:
+- Python (Direkomendasikan versi 3.11 atau yang lebih baru)
+- pip (Pengelola paket Python)
 
 ---
 
-## 🏗️ Model Features
+## Langkah Instalasi & Pengaturan (Installation Guide)
 
-Model dilatih dengan 7 fitur:
+1. Unduh atau Ekstrak Proyek
+   Ekstrak folder proyek yang Anda miliki ke direktori pilihan di komputer Anda.
 
-| Kolom | Keterangan |
-|---|---|
-| `Age` | Usia (tahun) |
-| `Height` | Tinggi badan (cm) |
-| `Weight` | Berat badan (kg) |
-| `FAF` | Frekuensi aktivitas fisik (0–3) |
-| `FCVC` | Frekuensi konsumsi sayur (1–3) |
-| `CH2O` | Konsumsi air (1–3) |
-| `NCP` | Jumlah makan utama (default=3) |
+2. Buka Terminal / Command Prompt
+   Arahkan direktori terminal ke folder penyimpanan proyek tersebut:
+   cd path/ke/folder-proyek
+
+3. Membuat Virtual Environment (Opsional namun Disarankan)
+   Untuk menjaga kebersihan pustaka sistem:
+   - Windows:
+     python -m venv venv
+     venv\Scripts\activate
+   - macOS / Linux:
+     python3 -m venv venv
+     source venv/bin/activate
+
+4. Instalasi Pustaka yang Dibutuhkan
+   Jalankan perintah berikut untuk menginstal seluruh pustaka yang tercatat dalam berkas konfigurasi:
+   pip install -r requirements.txt
 
 ---
 
-## 🏷️ Label Kelas
+## Struktur Berkas Proyek (Project Structure)
+Berikut adalah susunan direktori utama dari aplikasi ini:
+- app.py — Berkas utama untuk menjalankan navigasi dan antarmuka web Streamlit.
+- auth.py — Modul untuk menangani autentikasi pengguna (login dan registrasi).
+- database.py — Modul untuk mengelola penyimpanan dan pengambilan riwayat kesehatan dari database Supabase.
+- ml.py — Modul inti Machine Learning (pemuatan artefak model, inferensi prediksi RF Hybrid Voting Confidence Scaling, klasterisasi K-Means, dan SHAP Waterfall Plot).
+- styles.py — Modul untuk menyuntikkan Global Custom CSS.
+- supabase_client.py — Berkas konfigurasi untuk menghubungkan aplikasi dengan klien Supabase Cloud.
+- dashboard.py — Modul tampilan untuk halaman dasbor monitoring dan grafik riwayat kesehatan.
+- prediksi.py — Modul tampilan untuk halaman form input data fisik & gaya hidup serta visualisasi hasil prediksi, klasterisasi, dan SHAP.
+- profil.py — Modul tampilan untuk halaman kelola profil pengguna.
+- models/ — Folder penyimpanan berkas model .pkl (joblib/pickle) yang telah dilatih (best_rf_model.pkl, tree_weights.pkl, encoding_rules.pkl, model_kmeans.pkl, scaler_kmeans.pkl, dll).
+- requirements.txt — Daftar pustaka dan dependensi Python.
 
-| Kelas | Tampilan |
-|---|---|
-| `Insufficient_Weight` | Berat Badan Kurang |
-| `Normal_Weight` | Berat Badan Normal |
-| `Overweight_Level_I` | Kelebihan Berat I |
-| `Overweight_Level_II` | Kelebihan Berat II |
-| `Obesity_Type_I` | Obesitas Tipe I |
-| `Obesity_Type_II` | Obesitas Tipe II |
-| `Obesity_Type_III` | Obesitas Tipe III |
+---
+
+## Cara Menjalankan Program (How to Run)
+
+1. Pastikan Anda berada di dalam direktori folder proyek dan virtual environment sudah aktif (jika menggunakannya).
+2. Jalankan perintah Streamlit berikut di terminal:
+   streamlit run app.py
+3. Salin tautan lokal (biasanya http://localhost:8501) yang muncul di terminal, lalu buka melalui peramban web (browser) Anda.
