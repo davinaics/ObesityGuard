@@ -1,27 +1,27 @@
-# 🩺 ObesityGuard – Klasifikasi & Monitoring Obesitas
+# 🩺 ObesityGuard – Classification & Monitoring Obesity
 
-Web interaktif berbasis Streamlit yang dirancang untuk melakukan klasifikasi tingkat obesitas, segmentasi gaya hidup, serta transparansi hasil klasifikasi menggunakan SHAP (Shapley Additive Explanations).
-
----
-
-## 💻 Prasyarat Sistem (System Requirements)
-Pastikan perangkat Anda telah terinstal perangkat lunak berikut:
-- Python (Direkomendasikan versi 3.11 atau yang lebih baru)
-- pip (Pengelola paket Python)
+An interactive Streamlit-based web application designed to classify obesity levels, segment lifestyles, and provide transparency regarding classification results using SHAP (Shapley Additive Explanations).
 
 ---
 
-## ⚙️ Langkah Instalasi & Pengaturan (Installation Guide)
+## 💻 System Requirements
+Make sure the following software is installed on your device:
+- Python (Version 3.11 or later is recommended)
+- pip (Python package manager)
 
-1. Unduh atau Ekstrak Proyek
-   Ekstrak folder proyek yang Anda miliki ke direktori pilihan di komputer Anda.
+---
 
-2. Buka Terminal / Command Prompt
-   Arahkan direktori terminal ke folder penyimpanan proyek tersebut:
-   cd path/ke/folder-proyek
+## ⚙️ Installation Guide
 
-3. Membuat Virtual Environment (Opsional namun Disarankan)
-   Untuk menjaga kebersihan pustaka sistem:
+1. Download or Extract the Project
+   Extract the project folder to a directory of your choice on your computer.
+
+2. Open Terminal / Command Prompt
+   Change the terminal directory to the project folder:
+   cd path/to/project-folder
+
+3. Creating a Virtual Environment (Optional but Recommended)
+   To keep your system libraries clean:
    - Windows:
      python -m venv venv
      venv\Scripts\activate
@@ -29,13 +29,13 @@ Pastikan perangkat Anda telah terinstal perangkat lunak berikut:
      python3 -m venv venv
      source venv/bin/activate
 
-4. Instalasi Pustaka yang Dibutuhkan
-   Jalankan perintah berikut untuk menginstal seluruh pustaka yang tercatat dalam berkas konfigurasi:
+4. Installing Required Libraries
+   Run the following command to install all libraries listed in the configuration file:
    pip install -r requirements.txt
 
 ---
 
-## 📁 Struktur Berkas Proyek (Project Structure)
+## 📁 Project Structure
 ```
 obesity_app/
 ├── app.py                       
@@ -57,24 +57,24 @@ obesity_app/
     ├── prediksi.py               
     └── dashboard.py             
 ```
-Berikut adalah susunan direktori utama dari aplikasi ini:
-- app.py — Berkas utama untuk menjalankan navigasi dan antarmuka web Streamlit.
-- auth.py — Modul untuk menangani autentikasi pengguna (login dan registrasi).
-- database.py — Modul untuk mengelola penyimpanan dan pengambilan riwayat kesehatan dari database Supabase.
-- ml.py — Modul inti Machine Learning (pemuatan artefak model, inferensi prediksi RF Hybrid Voting Confidence Scaling, klasterisasi K-Means, dan SHAP Waterfall Plot).
-- styles.py — Modul untuk menyuntikkan Global Custom CSS.
-- supabase_client.py — Berkas konfigurasi untuk menghubungkan aplikasi dengan klien Supabase Cloud.
-- dashboard.py — Modul tampilan untuk halaman dasbor monitoring dan grafik riwayat kesehatan.
-- prediksi.py — Modul tampilan untuk halaman form input data fisik & gaya hidup serta visualisasi hasil prediksi, klasterisasi, dan SHAP.
-- profil.py — Modul tampilan untuk halaman kelola profil pengguna.
-- models/ — Folder penyimpanan berkas model .pkl (joblib/pickle) yang telah dilatih (best_rf_model.pkl, tree_weights.pkl, encoding_rules.pkl, model_kmeans.pkl, scaler_kmeans.pkl, dll).
-- requirements.txt — Daftar pustaka dan dependensi Python.
+Here is the main directory structure of this application:
+- app.py — The main file for running the Streamlit web interface and navigation.
+- auth.py — A module for handling user authentication (login and registration).
+- database.py — A module for managing the storage and retrieval of health history from the Supabase database.
+- ml.py — Core Machine Learning module (loading model artifacts, RF Hybrid Voting Confidence Scaling prediction inference, K-Means clustering, and SHAP Waterfall Plot).
+- styles.py — Module for injecting Global Custom CSS.
+- supabase_client.py — Configuration file for connecting the application to the Supabase Cloud client.
+- dashboard.py — View module for the monitoring dashboard and health history graph pages.
+- prediction.py — View module for the physical data & lifestyle input form page, as well as the visualization of prediction results, clustering, and SHAP.
+- profile.py — View module for the user profile management page.
+- models/ — Folder containing trained .pkl (joblib/pickle) model files (best_rf_model.pkl, tree_weights.pkl, encoding_rules.pkl, model_kmeans.pkl, scaler_kmeans.pkl, etc.).
+- requirements.txt — List of Python libraries and dependencies.
 
 ---
 
-## 🚀 Cara Menjalankan Program (How to Run)
+## 🚀 How to Run
 
-1. Pastikan Anda berada di dalam direktori folder proyek dan virtual environment sudah aktif (jika menggunakannya).
-2. Jalankan perintah Streamlit berikut di terminal:
+1. Make sure you are in the project folder directory and that the virtual environment is active (if you are using one).
+2. Run the following Streamlit command in the terminal:
    streamlit run app.py
-3. Salin tautan lokal (biasanya http://localhost:8501) yang muncul di terminal, lalu buka melalui peramban web (browser) Anda.
+3. Copy the local link (usually http://localhost:8501) that appears in the terminal, then open it in your web browser.
