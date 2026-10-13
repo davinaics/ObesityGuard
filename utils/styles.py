@@ -60,7 +60,8 @@ def inject_global_css():
         }
         
         [data-testid="stHeader"] {
-            display: none !important;
+            visibility: visible !important;
+            display: flex !important;
         }
 
         /* ── Sidebar & Menu Estetik ──────────────────────────────────────── */
@@ -421,7 +422,7 @@ def inject_global_css():
         }
 
         /* Hide default streamlit branding */
-        #MainMenu, footer, header { visibility: hidden; }
+        #MainMenu, footer { visibility: hidden; }
 
         /* ── Percantik Form Bawaan (Login, Register, Prediksi) ── */
         [data-testid="stForm"] {
@@ -455,11 +456,6 @@ def inject_global_css():
             box-shadow: 0 6px 20px rgba(76,175,80,.40) !important;
         }
 
-        /* ── Sembunyikan Tombol Tombol Sidebar (Panah) ── */
-        [data-testid="collapsedControl"],
-        [data-testid="stSidebarCollapseButton"] {
-            display: none !important;
-        }
         </style>
         """,
         unsafe_allow_html=True,
